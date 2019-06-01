@@ -1,4 +1,4 @@
-#Connect4
+Connect4
 
 juego connect4 hecho en C, pide nombre de los jugadores para iniciar y toma las iniciales como simbolos del juego automaticamente.
 
