@@ -49,14 +49,11 @@ void mostrarTablero(char **matriz){
 
 int checkizquierda(char **board,int row,int col,char ficha){
     if(col<0){
-        printf("index out");
         return 0;
     }
     if(board[row][col] != ficha){
-        printf("error ficha");
         return 0;
     }
-    printf("suma 1");
     return 1 + checkizquierda(board,row,col-1,ficha);
 }
 int checkderecha(char **board,int row,int col,char ficha){
@@ -216,7 +213,7 @@ int jugar(char **matriz, FichaJuego *J1, FichaJuego *J2){
             }
             if(turnocompleto == 4){
                 mostrarTablero(matriz);
-                printf("jugador %s ha ganado la partida !!",J1->nombre);
+                printf("jugador %s ha ganado la partida !!\n",J1->nombre);
                 return 0;
             }
         }
