@@ -231,7 +231,7 @@ int jugar(char **matriz, FichaJuego *J1, FichaJuego *J2){
             }
             if(turnocompleto == 4){
                 mostrarTablero(matriz);
-                printf("jugador %s ha ganado la partida !!",J1->nombre);
+                printf("jugador %s ha ganado la partida !!",J2->nombre);
                 return 0;
             }
         }
