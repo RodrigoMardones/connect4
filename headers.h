@@ -89,49 +89,34 @@ int checkvertical(char **board,int row,int col,char ficha){
 //                      check diagonales
 //=============================================================================
 
-int checkdiagonal1(char **board,int row,int col,char ficha){
+int checkdiagonal(char **board,int row,int col,char ficha, int type){
     if(row<0 || col>7){
         return 0;
     }
     if(board[row][col] != ficha){
         return 0;
     }
-    return 1 + checkdiagonal1(board,row+1,col+1,ficha);
+    if(type == 1){
+        return 1 + checkdiagonal(board,row+1,col+1,ficha,type);    
+    }
+    if(type == 2){
+        return 1 + checkdiagonal(board,row-1,col-1,ficha,type); 
+    }
+    if(type == 3){
+        return 1 + checkdiagonal(board,row+1,col-1,ficha,type);
+    }
+    if(type == 4){
+        return 1 + checkdiagonal(board,row-1,col+1,ficha,type);
+    }
 }
-int checkdiagonal2(char **board,int row,int col,char ficha){
-    if(row<0 || col>7){
-        return 0;
-    }
-    if(board[row][col] != ficha){
-        return 0;
-    }
-    return 1 + checkdiagonal2(board,row-1,col-1,ficha);
-}
-int checkdiagonal3(char **board,int row,int col,char ficha){
-    if(row<0 || col>7){
-        return 0;
-    }
-    if(board[row][col] != ficha){
-        return 0;
-    }
-    return 1 + checkdiagonal3(board,row+1,col-1,ficha);
-}
-int checkdiagonal4(char **board,int row,int col,char ficha){
-    if(row<0 || col>7){
-        return 0;
-    }
-    if(board[row][col] != ficha){
-        return 0;
-    }
-    return 1 + checkdiagonal4(board,row-1,col+1,ficha);
-}
+
 
 int checkdiagonales(char **board,int row,int col, char ficha){
     int d1,d2,d3,d4;
-    d1 = checkdiagonal1(board,row,col,ficha);
-    d2 = checkdiagonal2(board,row,col,ficha);
-    d3 = checkdiagonal3(board,row,col,ficha);
-    d4 = checkdiagonal4(board,row,col,ficha);
+    d1 = checkdiagonal(board,row,col,ficha,1);
+    d2 = checkdiagonal(board,row,col,ficha,2);
+    d3 = checkdiagonal(board,row,col,ficha,3);
+    d4 = checkdiagonal(board,row,col,ficha,4);
     int dp = d1 + d2 -1;
     int di = d3 + d4 -1;
     return dp>=4 || di>=4;
